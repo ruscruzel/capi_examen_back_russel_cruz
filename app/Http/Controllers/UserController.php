@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::select('users.*', 'user_domicilio.*')
+        $users = User::select('users.id', 'users.name', 'users.email', 'users.fecha_nacimiento', 'user_domicilio.domicilio', 'user_domicilio.nuero_exterior', 'user_domicilio.colonia', 'user_domicilio.cp', 'user_domicilio.ciudad', 'user_domicilio.activo')
         ->leftJoin('user_domicilio', 'user_domicilio.user_id', '=', 'users.id')
         ->where('user_domicilio.activo', 1)
         ->orderBy('users.name', 'asc')->get();
